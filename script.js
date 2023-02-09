@@ -45,7 +45,6 @@ rollBtn.addEventListener("click", function(){
     else{
         currentScore += diceRoll;
         document.getElementById(`current--${activePlayer}`).textContent=currentScore
-        // player0CurrentScore.textContent = currentScore;
        
     }
 })
@@ -59,7 +58,7 @@ hldBtn.addEventListener("click", function(){
     
     document.getElementById(`score--${activePlayer}`).textContent = sum;
 
-       if(document.getElementById(`score--${activePlayer}`).textContent >= 10){
+       if(document.getElementById(`score--${activePlayer}`).textContent >= 100){
         document.getElementById(`name--${activePlayer}`).textContent= "WINNER!"
         document.querySelector(`.player--${activePlayer}`).style.backgroundColor="B67C9F"
         console.log(activePlayer)
@@ -79,14 +78,17 @@ hldBtn.addEventListener("click", function(){
 newGameBtn.addEventListener("click", function(){
     currentScore = 0;
     activePlayer = 0;
+    console.log(scores)
     console.log(`Let's play a new game! The score is reset to ${currentScore}`)
-    player1Score.textContent=0;
-    player2Score.textContent=0;
+
+    for(let i = 0; i < scores.length; i++){
+        scores[i] = 0;
+        document.getElementById(`score--${i}`).textContent=0;
+    }
+
     document.getElementById('name--0').textContent = "PLayer 1";
     document.getElementById('name--1').textContent = "PLayer 2";
 
-    // let playerName = document.querySelector('.name');
-    // playerName.textContent = `Player ${activePlayer}`;
     dice.classList.add("hidden");
     document.querySelector(`.player--0`).style.backgroundColor="#D5AEC2"
     document.querySelector(`.player--1`).style.backgroundColor="#B97C9C"
